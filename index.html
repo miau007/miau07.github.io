@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eai qual vai ser?</title>
+    <style>
+        body {
+            background-image: url('https://i.pinimg.com/originals/84/58/89/845889d57b55717998e9abb6b0acdd46.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #simButton, #naoButton {
+            background-color: black;
+            color: white;
+        }
+        #naoButton {
+            position: absolute;
+        }
+        #titulo {
+            text-align: center;
+            font-size: 24px;
+            color: white; /* Cor do texto branco para o título */
+        }
+        #resposta {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo">Você quer namorar comigo?</h1>
+
+    <button id="simButton" onclick="resposta('sim')">Sim</button>
+    <button id="naoButton" onmouseenter="moveButton()" onclick="resposta('nao')">Não</button>
+    <p id="resposta"></p>
+
+    <script>
+        function resposta(escolha) {
+            var respostaElement = document.getElementById('resposta');
+            if (escolha === 'sim') {
+                respostaElement.textContent = 'Parabéns agora vc tem o homi mais totoso do mundo so pra vc!';
+                respostaElement.style.color = 'yellow';
+            } else {
+                respostaElement.textContent = 'Opa devieii!';
+                respostaElement.style.color = 'black';
+            }
+            document.getElementById('simButton').disabled = true;
+            document.getElementById('naoButton').disabled = true;
+        }
+
+        function moveButton() {
+            var button = document.getElementById('naoButton');
+            var maxX = window.innerWidth - button.offsetWidth;
+            var maxY = window.innerHeight - button.offsetHeight;
+            var newX = Math.random() * maxX;
+            var newY = Math.random() * maxY;
+            button.style.left = newX + 'px';
+            button.style.top = newY + 'px';
+        }
+    </script>
+</body>
+</html>
